@@ -17,6 +17,14 @@ public sealed class Habit
     public string? Description { get; set; }
     public HabitType Type { get; set; }
     public Frequency Frequency { get; set; }
+    public Target Target { get; set; }
+    public HabitStatus Status { get; set; }
+    public bool IsArchived { get; set; }
+    public DateOnly? EndDate { get; set; }
+    public MileStone? MileStone { get; set; }
+    public DateTime CreatedAtUtc { get; set; }
+    public DateTime? UpdatedAtUtc { get; set; }
+    public DateTime? LastCompletedAtUtc { get; set; }
 
 }
 
@@ -27,10 +35,11 @@ public enum HabitType
     Measurable = 2
 }
 
-public sealed class Frequency
+public enum HabitStatus
 {
-    public FrequencyType Type { get; set; }
-    public int TimesPerPeriod { get; set; }
+    None = 0,
+    Ongoing = 1,
+    Completed = 2
 }
 
 public enum FrequencyType
@@ -38,4 +47,22 @@ public enum FrequencyType
     Daily = 0,
     Weekly = 1,
     Monthly = 2
-}   
+}
+
+public sealed class Frequency
+{
+    public FrequencyType Type { get; set; }
+    public int TimesPerPeriod { get; set; }
+}
+
+public sealed class Target
+{
+    public int? Value { get; set; }
+    public string? Unit { get; set; }
+}
+
+public sealed class MileStone
+{
+    public int Target { get; set; }
+    public int Current { get; set; }
+}
