@@ -5,7 +5,11 @@
     <File Path="Directory.Packages.props" />
   </Folder>
   <Folder Name="/src/">
-    <Project Path="src/DevHabit.Api/DevHabit.Api.csproj" />
+    <Project Path="DevHabit.Api/DevHabit.Api.csproj" />
+  </Folder>
+  <Folder Name="/test/">
+    <Project Path="DevHabit.IntegrationTests/DevHabit.IntegrationTests.csproj" />
+    <Project Path="DevHabit.UnitTests/DevHabit.UnitTests.csproj" />
   </Folder>
   <Project Path="docker-compose.dcproj">
     <Build />
