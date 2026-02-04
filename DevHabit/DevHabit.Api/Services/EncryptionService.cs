@@ -6,6 +6,7 @@ namespace DevHabit.Api.Services;
 
 public sealed class EncryptionService(IOptions<EncryptionOptions> options)
 {
+
     private readonly byte[] _masterKey = Convert.FromBase64String(options.Value.Key);
     private const int IvSize = 16;
 
@@ -77,4 +78,5 @@ public sealed class EncryptionService(IOptions<EncryptionOptions> options)
             throw new InvalidOperationException("Invalid cipher text format", ex);
         }
     }
+
 }

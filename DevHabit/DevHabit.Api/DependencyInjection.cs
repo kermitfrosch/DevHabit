@@ -191,32 +191,7 @@ public static class DependencyInjection
             {
                 client.BaseAddress = new Uri(builder.Configuration.GetSection("GitHub:BaseUrl").Get<string>()!);
             });
-            //.AddHttpMessageHandler<DelayHandler>();
-            //.InternalRemoveAllResilienceHandlers()
-            // Configuring a custom resilience pipeline for the GitHub API client
-            //.AddResilienceHandler("custom", pipeline =>
-            //{
-            //    pipeline.AddTimeout(TimeSpan.FromSeconds(5));
-
-            //    pipeline.AddRetry(new HttpRetryStrategyOptions
-            //    {
-            //        MaxRetryAttempts = 3,
-            //        BackoffType = DelayBackoffType.Exponential,
-            //        UseJitter = true,
-            //        Delay = TimeSpan.FromMilliseconds(500)
-            //    });
-
-            //    pipeline.AddCircuitBreaker(new HttpCircuitBreakerStrategyOptions
-            //    {
-            //        SamplingDuration = TimeSpan.FromSeconds(10),
-            //        FailureRatio = 0.9,
-            //        MinimumThroughput = 5,
-            //        BreakDuration = TimeSpan.FromSeconds(5)
-            //    });
-
-            //    pipeline.AddTimeout(TimeSpan.FromSeconds(1));
-            //});
-
+            
         builder.Services.Configure<EncryptionOptions>(
             builder.Configuration.GetSection(EncryptionOptions.SectionName));
         builder.Services.AddTransient<EncryptionService>();
