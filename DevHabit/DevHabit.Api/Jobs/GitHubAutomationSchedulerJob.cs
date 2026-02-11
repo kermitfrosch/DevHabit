@@ -20,8 +20,11 @@ public sealed class GitHubAutomationSchedulerJob(
                 .Where(h => h.AutomationSource == AutomationSource.GitHub && !h.IsArchived)
                 .ToListAsync(context.CancellationToken);
 
-            logger.LogInformation("Found {Count} habits with GitHub automation", habitsToProcess.Count);
-
+            if (logger.IsEnabled(LogLevel.Information))
+            {
+                logger.LogInformation("Found {Count} habits with GitHub automation", habitsToProcess.Count);
+            }
+            
             foreach (Habit habit in habitsToProcess)
             {
                 // Create a trigger for immediate execution
@@ -38,7 +41,11 @@ public sealed class GitHubAutomationSchedulerJob(
 
                 // Schedule the job
                 await context.Scheduler.ScheduleJob(jobDetail, trigger);
-                logger.LogInformation("Scheduled processor job for habit {HabitId}", habit.Id);
+
+                if (logger.IsEnabled(LogLevel.Information))
+                {
+                    logger.LogInformation("Scheduled processor job for habit {HabitId}", habit.Id);
+                }
             }
 
             logger.LogInformation("Completed GitHub automation scheduler job");
