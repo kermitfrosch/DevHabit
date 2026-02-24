@@ -268,6 +268,8 @@ public static class DependencyInjection
 
         builder.Services.AddQuartzHostedService(options => options.WaitForJobsToComplete = true);
 
+        
+
         return builder;
     }
     public static WebApplicationBuilder AddCorsPolicy(this WebApplicationBuilder builder)

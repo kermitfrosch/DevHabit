@@ -20,7 +20,6 @@ public sealed class ETagMiddleware(RequestDelegate next)
 
             return;
         }
-
         string resourceUri = context.Request.Path.Value!;
         string? ifNoneMatch = context.Request.Headers.IfNoneMatch.FirstOrDefault()?.Replace("\"", "");
         string? ifMatch = context.Request.Headers.IfMatch.FirstOrDefault()?.Replace("\"", "");
@@ -60,7 +59,6 @@ public sealed class ETagMiddleware(RequestDelegate next)
                 return;
             }
         }
-
         memoryStream.Position = 0;
         await memoryStream.CopyToAsync(originalStream);
     }

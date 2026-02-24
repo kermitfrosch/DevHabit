@@ -5,6 +5,7 @@
     <File Path="Directory.Packages.props" />
   </Folder>
   <Folder Name="/src/">
+    <Project Path="DevHabit Infrastructure/Infrastructure/DevJHabit.Infrastructure.csproj" />
     <Project Path="DevHabit.Api/DevHabit.Api.csproj" />
   </Folder>
   <Folder Name="/test/">
